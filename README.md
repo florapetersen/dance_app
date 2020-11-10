@@ -25,7 +25,8 @@ Things you may want to cover:
 
 class User 
     has_many :registrations
-    has_many :dance_classes, through: :registrations 
+    has_many :dance_classes_as_student, through: :registrations, source: :dance_class
+    has_many :dance_classes_as_teacher, class_name: "DanceClass"
 
     validates :first_name, :last_name, presence: true 
     validates :phone_number, :email, presence: true, uniqueness: true 
@@ -44,7 +45,7 @@ class DanceClass
     has_many :dancers, through: :registrations, source: :user 
     belongs_to :style
     belongs_to :studio
-    belongs_to :teacher, class_name: :user
+    belongs_to :teacher, class_name: :user or "User"
 
     validates :name, :style_id, :studio_id, :teacher_id, presence: true 
 end 
@@ -68,6 +69,10 @@ class Studio
 
     validates :name, :location, :studio_owner_id 
 end 
+
+# want users to be able to have their own show page (a profile)
+# users class created by devise weird? added users controller and views folder 
+# not recognizing user paths
 
 
 

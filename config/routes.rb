@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :studios
   resources :styles
   devise_for :users
-  get 'welcome/home'
+  # get 'welcome/home'
   root 'welcome#home'
 
   
