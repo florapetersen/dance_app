@@ -1,4 +1,7 @@
 class StudiosController < ApplicationController
+    before_action :authenticate_user!
+    before_action :set_studio, only: [:show, :edit, :update, :destroy]
+    
     def new 
         @studio = Studio.new
     end
@@ -22,5 +25,9 @@ class StudiosController < ApplicationController
 
     def studio_params
         params.require(:studio).permit(:name, :address, :city, :state, :zip_code, :contact_phone, :contact_email)
+    end
+
+    def set_studio
+        @studio = current_user.studios.find(params[:id])
     end
 end

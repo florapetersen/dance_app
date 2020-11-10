@@ -1,1 +1,9 @@
 <h1>Add a Dance Class</h1>
+<%= form_for @dance_class do |f| %>
+<p>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+</p>
+    
+    <%= f.submit %>
+<% end %>
