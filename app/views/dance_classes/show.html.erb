@@ -1,3 +1,4 @@
 <h3><%= @dance_class.name %>(<%= @dance_class.style.name %>)</h3><br>
-<p>at: <%= @dance_class.studio.name %><br>
+<p>at: <%= link_to @dance_class.studio.name, studio_path(@dance_class.studio) %><br>
 <%= @dance_class.day.name %>s at <%= @dance_class.time %><%= @dance_class.ampm %> (<%= @dance_class.duration %> minutes)<br>
+<p>Register for this class</p>
