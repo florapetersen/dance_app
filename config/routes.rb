@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :days
   resources :class_registrations
   resources :dance_classes
   resources :studios

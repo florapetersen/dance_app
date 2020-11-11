@@ -10,21 +10,23 @@
   <body>
     <nav class="navbar navbar-light" style="background-color: #FFFFFF;">
     <a class="navbar-brand" href="/">DanceApp</a>
+    
+    <% if user_signed_in? %>
+    <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
+      <%= submit_tag "Sign Out" %>
+    <% end %>
+  <% else %>
     <form class="form-inline">
-      <a class="btn btn-outline-primary" href="/users/sign_out" role="button">
-      Logout 
+      <a class="btn btn-outline-primary" href="/users/sign_in" role="button">
+      Sign in
       </a>
       <div style="padding-left: 10px;">
-        <a class="btn btn-outline-primary" href="/users/sign_in" role="button">
-        Sign in
+        <a class="btn btn-outline-success" href="/users/sign_up" role="button">
+        Sign Up 
         </a>
-        <div style="padding-left: 10px;">
-          <a class="btn btn-outline-success" href="/users/sign_up" role="button">
-          Sign Up 
-          </a>
-        </div>
-    </div>
-  </form>
+      </div>
+    </form>
+  <% end %>
   </nav>
     <%= yield %>
   </body>

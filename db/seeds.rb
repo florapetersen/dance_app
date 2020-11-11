@@ -44,3 +44,13 @@ Style.create(name: 'tango')
 Style.create(name: 'reggaeton')
 Style.create(name: 'rueda de casino')
 Style.create(name: 'pole')
+
+Day.create(day: 'Monday')
+Day.create(day: 'Tuesday')
+Day.create(day: 'Wednesday')
+Day.create(day: 'Thursday')
+Day.create(day: 'Friday')
+Day.create(day: 'Saturday')
+Day.create(day: 'Sunday')
+
+

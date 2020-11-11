@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201110192440) do
+ActiveRecord::Schema.define(version: 20201111035941) do
 
   create_table "class_registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "dance_class_id"
-    t.time     "start_time"
-    t.time     "end_time"
     t.date     "date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -31,9 +29,20 @@ ActiveRecord::Schema.define(version: 20201110192440) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "day_id"
+    t.string   "time"
+    t.string   "ampm"
+    t.string   "duration"
+    t.index ["day_id"], name: "index_dance_classes_on_day_id"
     t.index ["studio_id"], name: "index_dance_classes_on_studio_id"
     t.index ["style_id"], name: "index_dance_classes_on_style_id"
     t.index ["user_id"], name: "index_dance_classes_on_user_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "studios", force: :cascade do |t|

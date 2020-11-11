@@ -1,24 +1,25 @@
 class StudiosController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_studio, only: [:show, :edit, :update, :destroy]
+    before_action :set_studio, only: [:edit, :update, :destroy]
+    
+    def index
+        @studios = Studio.all
+    end
+
+    def show 
+    end
     
     def new 
         @studio = Studio.new
     end
 
-    def index
-    end
-
     def create 
-        @studio = Studio.new(studio_params)
+        @studio = current_user.studios_as_studio_owner.build(studio_params)
         if @studio.save 
             redirect_to studio_path(@studio)
         else 
             render :new 
         end 
-    end
-
-    def show
     end
 
     private 

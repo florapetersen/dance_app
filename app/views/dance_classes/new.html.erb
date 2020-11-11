@@ -1,8 +1,32 @@
 <h1>Add a Dance Class</h1>
 <%= form_for @dance_class do |f| %>
 <p>
-    <%= f.label :name %>
+    <%= f.label :name, 'Name and Level' %>
     <%= f.text_field :name %><br>
+</p>
+<p>
+    <%= f.label :style %>
+    <%= collection_select :dance_class, :style_id, Style.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :studio %>
+    <%= collection_select :dance_class, :studio_id, Studio.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :day %>
+    <%= collection_select :dance_class, :day_id, Day.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :time %>
+    <%= f.text_field :time %>
+</p>
+<p>
+    <%= f.label :ampm, 'AM/PM' %>
+    <%= f.text_field :ampm %>
+</p>
+<p>
+    <%= f.label :duration, 'Duration (minutes)' %>
+    <%= f.text_field :duration %>
 </p>
     
     <%= f.submit %>
