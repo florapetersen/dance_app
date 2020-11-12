@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   resources :days
   resources :class_registrations
-  resources :dance_classes
+  resources :dance_classes do 
+    resources :class_registrations, only: [:index, :new]
+  end
   resources :studios
   resources :styles
-  devise_for :users
+  devise_for :users do 
+    resources :class_registrations, only: [:index, :new]
+  end
+
+
   # get 'welcome/home'
   root 'welcome#home'
 

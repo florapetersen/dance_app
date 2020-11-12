@@ -1,6 +1,6 @@
 class DanceClassesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_dance_class, only: [:edit, :update, :destroy]
+    before_action :set_dance_class, only: [:edit, :update]
     
     def index
         @dance_classes = DanceClass.all
@@ -21,6 +21,23 @@ class DanceClassesController < ApplicationController
         else 
             render :new 
         end 
+    end
+
+    def edit 
+    end 
+
+    def update 
+        if @dance_class.update(dance_class_params)
+            redirect_to dance_class_path(@dance_class)
+        else
+           render :edit   
+        end
+    end 
+
+    def destroy 
+        @dance_class = DanceClass.find(params[:id])
+        @dance_class.destroy
+        redirect_to dance_classes_path
     end
 
     private

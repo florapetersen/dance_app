@@ -1,0 +1,22 @@
+<%= form_for @class_registration do |f| %>
+
+<p>
+    <%= f.label :first_name, "First name:" %>
+    <%= f.text_field :first_name %>
+</p>
+<p>
+    <%= f.label :last_name, "Last name:" %>
+    <%= f.text_field :last_name %>
+</p>
+<p>
+    <%= f.label :preferred_pronouns, "Preferred pronouns:" %>
+    <%= f.text_field :preferred_pronouns %>
+</p>
+<p>
+    <%= f.label :injuries, "Any injuries we should know about?" %>
+    <%= f.text_field :injuries %>
+</p>
+<p>
+    <%= f.submit %>
+</p>
+<% end %>

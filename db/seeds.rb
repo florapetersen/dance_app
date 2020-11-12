@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Style.destroy_all
+Day.destroy_all
+
 Style.create(name: 'ballet')
 Style.create(name: 'jazz')
 Style.create(name: 'lyrical')
@@ -45,12 +48,12 @@ Style.create(name: 'reggaeton')
 Style.create(name: 'rueda de casino')
 Style.create(name: 'pole')
 
-Day.create(day: 'Monday')
-Day.create(day: 'Tuesday')
-Day.create(day: 'Wednesday')
-Day.create(day: 'Thursday')
-Day.create(day: 'Friday')
-Day.create(day: 'Saturday')
-Day.create(day: 'Sunday')
+Day.create(name: 'Monday')
+Day.create(name: 'Tuesday')
+Day.create(name: 'Wednesday')
+Day.create(name: 'Thursday')
+Day.create(name: 'Friday')
+Day.create(name: 'Saturday')
+Day.create(name: 'Sunday')
 
 

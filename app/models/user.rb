@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :dance_classes_as_teacher, class_name: "DanceClass"
   has_many :studios_as_studio_owner, class_name: "Studio"
      
-  validates :first_name, :last_name, presence: true 
+  validates :first_name, :last_name, :injuries, :preferred_pronouns, presence: true 
   validates :phone_number, :email, presence: true, uniqueness: true 
 end

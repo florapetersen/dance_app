@@ -1,0 +1,4 @@
+<h1>Find a dance class in any style!</h1>
+<% @styles.each do |style| %>
+    <li><%= link_to style.name, style_path(style) %></li>
+<% end %>
