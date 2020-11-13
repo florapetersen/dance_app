@@ -12,4 +12,14 @@ class User < ApplicationRecord
      
   validates :first_name, :last_name, :injuries, :preferred_pronouns, presence: true 
   validates :phone_number, :email, presence: true, uniqueness: true 
+
+  def self.from_google(uid:, email:, full_name:, avatar_url:)
+    user= User.find_or_create_by(email: email) do |u|
+      u.uid = uid
+      u.full_name = full_name
+      u.avatar_url = avatar_url
+      u.password = SecureRandom.hex
+    end
+    user.update(uid: uid, full_name: full_name, avatar_url: avatar_url)
+  end
 end
