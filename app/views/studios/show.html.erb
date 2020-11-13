@@ -10,3 +10,8 @@
         <p><%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %> at <%= dance_class.time %><%= dance_class.ampm %></p>
     <% end %>
 </p>
+
+<%= link_to "Edit Studio", edit_studio_path(@studio) %><br>
+<%= form_tag(studio_path(@studio), method: :delete, style: 'display: inline-block;') do %><br>
+  <%= submit_tag "Delete Studio" %>
+  <% end %>

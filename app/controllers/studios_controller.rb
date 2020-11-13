@@ -1,6 +1,6 @@
 class StudiosController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_studio, only: [:edit, :update, :destroy]
+    #before_action :set_studio, only: [:edit, :update, :destroy]
     
     def index
         @studios = Studio.all
@@ -28,13 +28,19 @@ class StudiosController < ApplicationController
     end 
 
     def update 
-        @dstudio = current_user.studios_as_studio_owner.find(params[:id])
+        @studio = current_user.studios_as_studio_owner.find(params[:id])
         if @studio.update(studio_params)
             redirect_to studio_path(@studio)
         else
            render :edit   
         end
     end 
+
+    def destroy 
+        @studio = Studio.find(params[:id])
+        @studio.destroy
+        redirect_to studios_path
+    end
 
     private 
 

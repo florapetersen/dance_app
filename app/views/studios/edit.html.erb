@@ -1,0 +1,27 @@
+<h1>Edit Studio</h1>
+<%= show_errors_for(@studio) %>
+<%= form_for @studio do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :address %>
+    <%= f.text_field :address %><br>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %><br>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %><br>
+
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code %><br>
+
+    <%= f.label :contact_phone %>
+    <%= f.text_field :contact_phone %><br>
+
+    <%= f.label :contact_email %>
+    <%= f.text_field :contact_email %><br>
+
+    <%= f.submit %>
+<% end %>
+
