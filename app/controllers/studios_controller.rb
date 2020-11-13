@@ -23,6 +23,19 @@ class StudiosController < ApplicationController
         end 
     end
 
+    def edit 
+        @studio = current_user.studios_as_studio_owner.find(params[:id])
+    end 
+
+    def update 
+        @dstudio = current_user.studios_as_studio_owner.find(params[:id])
+        if @studio.update(studio_params)
+            redirect_to studio_path(@studio)
+        else
+           render :edit   
+        end
+    end 
+
     private 
 
     def studio_params

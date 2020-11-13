@@ -1,6 +1,6 @@
 class DanceClassesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_dance_class, only: [:edit, :update]
+    #before_action :set_dance_class, only: [:edit, :update]
     
     def index
         @dance_classes = DanceClass.all
@@ -24,9 +24,11 @@ class DanceClassesController < ApplicationController
     end
 
     def edit 
+        @dance_class = current_user.dance_classes_as_teacher.find(params[:id])
     end 
 
     def update 
+        @dance_class = current_user.dance_classes_as_teacher.find(params[:id])
         if @dance_class.update(dance_class_params)
             redirect_to dance_class_path(@dance_class)
         else
@@ -46,7 +48,7 @@ class DanceClassesController < ApplicationController
         params.require(:dance_class).permit(:name, :style_id, :studio_id, :day_id, :time, :ampm, :duration)
     end
 
-    def set_dance_class
-        @dance_class = current_user.dance_classes.find(params[:id])
-    end 
+    #def set_dance_class
+        #@dance_class = current_user.dance_classes.find(params[:id])
+    #end 
 end 
