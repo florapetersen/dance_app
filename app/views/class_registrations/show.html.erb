@@ -1,1 +1,3 @@
-<h1>You are registered!</h1>
+<h2>You are registered for <%= @dance_class.name %> !</h2>
+<p><%= @dance_class.day.name %> <%= @dance_class.time %><%= @dance_class.ampm %> at <%= link_to @studio.name, studio_path(@studio) %></p>
+<p>See you there!</p>

@@ -7,12 +7,14 @@ class ClassRegistrationsController < ApplicationController
     end 
 
     def show 
+        @dance_class = @class_registration.dance_class
+        @studio = @class_registration.dance_class.studio
     end 
 
     def new 
         @dancer = current_user 
         @dance_class = DanceClass.find(params[:dance_class_id])
-        @class_registration = ClassRegistration.new
+        @class_registration = @dance_class.class_registrations.build
     end
 
     def create 

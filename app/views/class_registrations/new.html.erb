@@ -1,4 +1,6 @@
+<%= show_errors_for(@class_registration) %>
 <%= form_for @class_registration do |f| %>
+<%= f.hidden_field :dance_class_id %>
 
 <p>
     <%= f.label :first_name, "First name:" %>
