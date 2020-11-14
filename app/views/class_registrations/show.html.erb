@@ -1,3 +1,8 @@
-<h2>You are registered for <%= @dance_class.name %> !</h2>
-<p><%= @dance_class.day.name %> <%= @dance_class.time %><%= @dance_class.ampm %> at <%= link_to @studio.name, studio_path(@studio) %></p>
+<h2>You are registered for <%= @dance_class.name %>!</h2>
+<p><%= @dance_class.day.name %>, <%= @dance_class.start_time.strftime('%b %e at %l:%M %p') %> at <%= link_to @studio.name, studio_path(@studio) %></p>
 <p>See you there!</p>
+
+<%= link_to "Edit Registration", edit_class_registration_path(@class_registration) %><br>
+<%= form_tag(class_registration_path(@class_registration), method: :delete, style: 'display: inline-block;') do %><br>
+  <%= submit_tag "Delete Class Registration" %>
+  <% end %>

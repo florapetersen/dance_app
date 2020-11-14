@@ -6,12 +6,12 @@ class ClassRegistration < ApplicationRecord
   def self.by_dance_class(dance_class)
     where(dance_class_id: dance_class.id)
   end
-  
-  def self.upcoming 
-    where("day > ?", Time.now)
-  end
 
-  def self.past 
-    where("day < ?", Time.now)
+  def dance_class_name
+    self.dance_class.name 
+  end 
+
+  def dancer_name 
+    self.dancer.name
   end
 end

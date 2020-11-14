@@ -18,12 +18,8 @@
     <%= collection_select :dance_class, :day_id, Day.all, :id, :name %>
 </p>
 <p>
-    <%= f.label :time %>
-    <%= f.text_field :time %>
-</p>
-<p>
-    <%= f.label :ampm, 'AM/PM' %>
-    <%= f.text_field :ampm %>
+    <%= f.label :start_time %>
+    <%= f.datetime_field :start_time %>
 </p>
 <p>
     <%= f.label :duration, 'Duration (minutes)' %>

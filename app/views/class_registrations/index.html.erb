@@ -1,1 +1,6 @@
 <h1>My Registrations</h1>
+<% @class_registrations.each do |registration| %>
+    <% if registration.dance_class.upcoming %>
+        <%= link_to registration.dance_class.name, class_registration_path(registration) %><br>
+    <% end %>
+<% end %>

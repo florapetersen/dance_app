@@ -1,9 +1,10 @@
 <h3><%= @dance_class.name %>(<%= @dance_class.style.name %>)</h3><br>
 <p>at: <%= link_to @dance_class.studio.name, studio_path(@dance_class.studio) %><br>
-<%= @dance_class.day.name %> at <%= @dance_class.time %><%= @dance_class.ampm %> (<%= @dance_class.duration %> minutes)<br>
+<%= @dance_class.day.name %>, <%= @dance_class.start_time.strftime('%b %e at %l:%M %p') %> (<%= @dance_class.duration %> minutes)<br>
 <p><%= link_to "Register for this class", new_dance_class_class_registration_path(@dance_class) %></p>
 
 <%= link_to "Edit Dance Class", edit_dance_class_path(@dance_class) %><br>
 <%= form_tag(dance_class_path(@dance_class), method: :delete, style: 'display: inline-block;') do %><br>
   <%= submit_tag "Delete Dance Class" %>
   <% end %>
+

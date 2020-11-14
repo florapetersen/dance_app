@@ -1,6 +1,6 @@
 class DanceClassesController < ApplicationController
     before_action :authenticate_user!
-    #before_action :set_dance_class, only: [:edit, :update]
+    before_action :set_dance_class, only: [:edit, :update]
     
     def index
         @dance_classes = DanceClass.all
@@ -45,10 +45,10 @@ class DanceClassesController < ApplicationController
     private
 
     def dance_class_params
-        params.require(:dance_class).permit(:name, :style_id, :studio_id, :day_id, :time, :ampm, :duration)
+        params.require(:dance_class).permit(:name, :style_id, :studio_id, :day_id, :start_time, :duration)
     end
 
-    #def set_dance_class
-        #@dance_class = current_user.dance_classes.find(params[:id])
-    #end 
+    def set_dance_class
+        @dance_class = current_user.dance_classes.find(params[:id])
+    end 
 end 

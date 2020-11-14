@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201113035550) do
+ActiveRecord::Schema.define(version: 20201113202735) do
 
   create_table "class_registrations", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,9 +33,8 @@ ActiveRecord::Schema.define(version: 20201113035550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "day_id"
-    t.string   "time"
-    t.string   "ampm"
     t.string   "duration"
+    t.datetime "start_time"
     t.index ["day_id"], name: "index_dance_classes_on_day_id"
     t.index ["studio_id"], name: "index_dance_classes_on_studio_id"
     t.index ["style_id"], name: "index_dance_classes_on_style_id"
