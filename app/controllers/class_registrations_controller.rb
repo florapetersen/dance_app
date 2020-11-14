@@ -3,7 +3,13 @@ class ClassRegistrationsController < ApplicationController
     before_action :set_class_registration, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @class_registrations = current_user.class_registrations
+        if params[:filter_by_time_and_date] == "Upcoming"
+            @class_registrations = current_user.class_registrations.upcoming
+        elsif params[:filter_by_time_and_date] == "Past"
+            @class_registrations = current_user.class_registrations.past
+        else
+            @class_registrations = current_user.class_registrations
+        end  
     end 
 
     def show 

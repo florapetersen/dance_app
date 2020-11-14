@@ -14,4 +14,13 @@ class ClassRegistration < ApplicationRecord
   def dancer_name 
     self.dancer.name
   end
+
+  def self.upcoming 
+    joins(:dance_class).where("dance_classes.start_time > ?", Time.now)
+  end
+
+  def self.past 
+    joins(:dance_class).where("dance_classes.start_time < ?", Time.now)
+  end
+
 end

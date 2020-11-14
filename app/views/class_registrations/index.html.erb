@@ -1,6 +1,13 @@
 <h1>My Registrations</h1>
-<% @class_registrations.each do |registration| %>
-    <% if registration.dance_class.upcoming %>
-        <%= link_to registration.dance_class.name, class_registration_path(registration) %><br>
-    <% end %>
+<%= form_tag(class_registrations_path, method: 'get') do %>
+    <label for="filter_by_time_and_date">Filter By Time and Date</label>
+    <select name="filter_by_time_and_date">
+        <option <%= 'selected' if params[:filter_by_time_and_date] == '' %> value="All">All</option>
+        <option <%= 'selected' if params[:filter_by_time_and_date] == 'past' %> value="Past">Past</option>
+        <option <%= 'selected' if params[:filter_by_time_and_date] == 'upcoming' %> value="Upcoming">Upcoming</option>
+    </select>
+    <%= submit_tag 'Filter Results' %>
+<% end %>
+<% @class_registrations.each do |class_registration| %>
+    <%= link_to class_registration.dance_class.name, dance_class_path(class_registration.dance_class) %><br>
 <% end %>

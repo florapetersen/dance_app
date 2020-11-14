@@ -3,18 +3,4 @@
     <%= link_to dance_class.name, dance_class_path(dance_class) %><br>
 <% end %>
 
-<h2>My Upcoming Classes</h2>
-<%= form_tag(dance_classes_path, method: 'get') do %>
-  <label for="filter_by_time">Filter By Time</label>
-  <select name="filter_by_time">
-    <option <%= 'selected' if params[:filter_by_time] == '' %> value="">All</option>
-    <option <%= 'selected' if params[:filter_by_time] == 'past' %> value="past">Past</option>
-    <option <%= 'selected' if params[:filter_by_time] == 'upcoming' %> value="upcoming">Upcoming</option>
-  </select>
-  <%= submit_tag 'Filter Results' %>
-<% end %>
-<% @dance_classes.each do |dance_class| %>
-  <p>
-    <%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %>, <%= dance_class.start_time.strftime('%b %e at %l:%M %p') %> at <%= dance_class.studio.name %>
-  </p>
-<% end %>
+
