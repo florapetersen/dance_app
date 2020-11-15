@@ -1,0 +1,29 @@
+<%= show_errors_for(@dance_class) %>
+<%= form_for @dance_class do |f| %>
+<p>
+    <%= f.label :name, 'Name and Level' %>
+    <%= f.text_field :name %><br>
+</p>
+<p>
+    <%= f.label :style %>
+    <%= collection_select :dance_class, :style_id, Style.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :studio %>
+    <%= collection_select :dance_class, :studio_id, Studio.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :day %>
+    <%= collection_select :dance_class, :day_id, Day.all, :id, :name %>
+</p>
+<p>
+    <%= f.label :start_time %>
+    <%= f.datetime_field :start_time %>
+</p>
+<p>
+    <%= f.label :duration, 'Duration (minutes)' %>
+    <%= f.text_field :duration %>
+</p>
+    
+    <%= f.submit %>
+<% end %>
