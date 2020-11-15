@@ -38,7 +38,11 @@ class StudiosController < ApplicationController
 
     def destroy 
         @studio = Studio.find(params[:id])
-        @studio.destroy
+        if current_user == @studio.studio_owner 
+            @studio.destroy 
+        else
+            flash[:error] = "You can't delete someone else's studio!"
+        end
         redirect_to studios_path
     end
 

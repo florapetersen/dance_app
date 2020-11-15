@@ -1,6 +1,6 @@
 class DanceClassesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_dance_class, only: [:edit, :update]
+    #before_action :set_dance_class, only: [:edit, :update]
     
     def index
         @dance_classes = DanceClass.all
@@ -38,7 +38,11 @@ class DanceClassesController < ApplicationController
 
     def destroy 
         @dance_class = DanceClass.find(params[:id])
-        @dance_class.destroy
+        if current_user == @dance_class.teacher
+            @dance_class.destroy
+        else
+            flash[:error] = "You can't delete someone else's class!"
+        end
         redirect_to dance_classes_path
     end
 

@@ -6,13 +6,5 @@ class DanceClass < ApplicationRecord
   belongs_to :day
   belongs_to :teacher, class_name: "User", foreign_key: :user_id
 
-  validates :name, presence: true 
-
-  def self.upcoming 
-    where("start_time > ?", Time.now)
-  end
-
-  def self.past 
-    where("start_time < ?", Time.now)
-  end
+  validates :name, :day, :start_time, :duration, presence: true 
 end 

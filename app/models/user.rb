@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :dance_classes_as_teacher, class_name: "DanceClass"
   has_many :studios_as_studio_owner, class_name: "Studio"
      
-  validates :first_name, :last_name, :injuries, :preferred_pronouns, presence: true 
-  validates :phone_number, :email, presence: true, uniqueness: true 
+  validates :first_name, :last_name, :phone_number, presence: true 
+  validates :email, presence: true, uniqueness: true 
 
   def self.from_google(uid:, email:, full_name:, avatar_url:)
     if user = User.find_by(email: email)
