@@ -1,13 +1,12 @@
 class StudiosController < ApplicationController
     before_action :authenticate_user!
-    #before_action :set_studio, only: [:edit, :update, :destroy]
+    before_action :set_studio, only: [:show, :edit, :update, :destroy]
     
     def index
         @studios = Studio.all
     end
 
     def show 
-        @studio = Studio.find(params[:id])
     end
     
     def new 
@@ -24,20 +23,22 @@ class StudiosController < ApplicationController
     end
 
     def edit 
-        @studio = current_user.studios_as_studio_owner.find(params[:id])
     end 
 
     def update 
-        @studio = current_user.studios_as_studio_owner.find(params[:id])
-        if @studio.update(studio_params)
-            redirect_to studio_path(@studio)
+        if current_user == @studio.studio_owner
+            if @studio.update(studio_params)
+                redirect_to studio_path(@studio)
+            else
+                render :edit   
+            end
         else
-           render :edit   
-        end
+            flash[:error] = "You can't edit someone else's studio!"
+            redirect_to studio_path(@studio)
+        end 
     end 
 
     def destroy 
-        @studio = Studio.find(params[:id])
         if current_user == @studio.studio_owner 
             @studio.destroy 
         else
@@ -53,6 +54,6 @@ class StudiosController < ApplicationController
     end
 
     def set_studio
-        @studio = current_user.studios.find(params[:id])
+        @studio = Studio.find(params[:id])
     end
 end

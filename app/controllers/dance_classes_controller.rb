@@ -1,13 +1,12 @@
 class DanceClassesController < ApplicationController
     before_action :authenticate_user!
-    #before_action :set_dance_class, only: [:edit, :update]
+    before_action :set_dance_class, only: [:show, :edit, :update, :destroy]
     
     def index
         @dance_classes = DanceClass.all
     end
 
     def show 
-        @dance_class = DanceClass.find(params[:id])
     end
 
     def new
@@ -24,20 +23,22 @@ class DanceClassesController < ApplicationController
     end
 
     def edit 
-        @dance_class = current_user.dance_classes_as_teacher.find(params[:id])
     end 
 
     def update 
-        @dance_class = current_user.dance_classes_as_teacher.find(params[:id])
-        if @dance_class.update(dance_class_params)
-            redirect_to dance_class_path(@dance_class)
+        if current_user == @dance_class.teacher
+            if @dance_class.update(dance_class_params)
+                redirect_to dance_class_path(@dance_class)
+            else
+                render :edit   
+            end
         else
-           render :edit   
-        end
+            flash[:error] = "You can't edit someone else's class!"
+            redirect_to dance_class_path(@dance_class)
+        end 
     end 
 
     def destroy 
-        @dance_class = DanceClass.find(params[:id])
         if current_user == @dance_class.teacher
             @dance_class.destroy
         else
@@ -53,6 +54,6 @@ class DanceClassesController < ApplicationController
     end
 
     def set_dance_class
-        @dance_class = current_user.dance_classes.find(params[:id])
+        @dance_class = DanceClass.find(params[:id])
     end 
 end 
