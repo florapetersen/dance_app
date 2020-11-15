@@ -23,57 +23,32 @@ Things you may want to cover:
 
 * ...
 
-class User 
-    has_many :registrations
-    has_many :dance_classes_as_student, through: :registrations, source: :dance_class
-    has_many :dance_classes_as_teacher, class_name: "DanceClass"
+# DanceApp
 
-    validates :first_name, :last_name, presence: true 
-    validates :phone_number, :email, presence: true, uniqueness: true 
-end 
+DanceApp is a simple app for dance studio owners, dance teachers, and dancers share and register for dance classes. Users can find studios and classes, register for classes, and keep track of classes they've registered for. 
 
-# 1. a user can have many dance classes as a dancer (through registrations), but also,
-# a user can have many dance classes as a teacher. 
-# right now, class User has_many dance_classes, through :registrations, as a dancer 
-# but does class User also need to has_many dance_classes, as a teacher? 
-# because DanceClass belongs to User (as a teacher). 
+## Instructions
 
-# 3. a lot of stuff from the devise cheatsheet was already done....?
+Clone this repo and run:
 
-class DanceClass 
-    has_many :registrations 
-    has_many :dancers, through: :registrations, source: :user 
-    belongs_to :style
-    belongs_to :studio
-    belongs_to :teacher, class_name: :user or "User"
+```$ bundle install``` to install dependencies, and 
 
-    validates :name, :style_id, :studio_id, :teacher_id, presence: true 
-end 
+```$ rails db:migrate``` to migrate the database.
 
-class Registration
-    belongs_to :dancer, class_name: :user 
-    belongs_to :dance_class
+Start up the server with the following command:
 
-    validates :dancer_id, :dance_class_id, :start_time, :end_time, :date, presence: true 
-end 
+```$ rails s```
 
-class Style
-    has_many :dance_classes 
-    
-    validates :name, presence: true 
-end 
+Open your browser. DanceApp will be found at https://localhost:3000
 
-class Studio
-    has_many :dance_classes
-    belongs_to :studio_owner, class_name: :user 
+## Author
 
-    validates :name, :location, :studio_owner_id 
-end 
+Flora Petersen - https//:github.com/florapetersen
 
-# want users to be able to have their own show page (a profile)
-# users class created by devise weird? added users controller and views folder 
-# not recognizing user paths
+## Contributing
 
+Bug reports and pull requests are welcome on GitHub at https://github.com/florapetersen/dance_app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
+## License
 
-
+The gem is available as open source under the terms of the MIT License.
