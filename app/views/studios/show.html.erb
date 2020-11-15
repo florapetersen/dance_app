@@ -5,10 +5,7 @@
     Email: <%= @studio.contact_email %><br>
 </p>
 <p>
-    <h4>Upcoming Classes</h4>
-    <% @studio.dance_classes.each do |dance_class| %>
-        <p><%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %>, <%= dance_class.time %></p>
-    <% end %>
+    <h4><%= link_to "Classes", studio_dance_classes_path(@studio.dance_classes) %></h4>
 </p>
 
 <%= link_to "Edit Studio", edit_studio_path(@studio) %><br>
