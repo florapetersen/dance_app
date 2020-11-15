@@ -11,4 +11,8 @@ class DanceClass < ApplicationRecord
   def time 
     self.start_time.strftime('%b %e at %l:%M %p')
   end
+
+  def self.upcoming 
+    where("start_time > ?", Time.now)
+  end
 end 
