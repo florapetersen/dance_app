@@ -9,5 +9,5 @@
     <%= submit_tag 'Filter Results' %>
 <% end %>
 <% @class_registrations.each do |class_registration| %>
-    <%= link_to class_registration.dance_class_name, dance_class_path(class_registration.dance_class) %><br>
+    <%= link_to class_registration.dance_class_name, class_registration_path(class_registration) %> - <%= class_registration.dance_class.day.name %>, <%= class_registration.dance_class.time %><br>
 <% end %>
