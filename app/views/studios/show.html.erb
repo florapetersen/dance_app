@@ -7,7 +7,7 @@
 <p>
     <h4>Upcoming Classes</h4>
     <% @studio.dance_classes.each do |dance_class| %>
-        <p><%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %>, <%= dance_class.start_time.strftime('%b %e at %l:%M %p') %></p>
+        <p><%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %>, <%= dance_class.time %></p>
     <% end %>
 </p>
 
