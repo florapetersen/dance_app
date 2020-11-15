@@ -3,7 +3,11 @@ class DanceClassesController < ApplicationController
     before_action :set_dance_class, only: [:show, :edit, :update, :destroy]
     
     def index
-        @dance_classes = DanceClass.all
+        if params[:studio_id]
+            @dance_classes = Studio.find(params[:studio_id]).dance_classes 
+        else 
+            @dance_classes = DanceClass.all
+        end
     end
 
     def show 
