@@ -39,12 +39,15 @@ Specs:
     - Devise
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
     - Google Oauth
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+    - /studios/1/dance_classes
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+    - /dance_classes/21/class_registrations/new
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+    - studios/new
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
