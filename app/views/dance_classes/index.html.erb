@@ -1,0 +1,3 @@
+<%= @dance_classes.each do |dance_class| %>
+    <%= link_to dance_class.name, dance_class_path(dance_class) %> - <%= dance_class.day.name %>, <%= dance_class.time %>
+<% end %>
