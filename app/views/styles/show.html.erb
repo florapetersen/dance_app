@@ -1,6 +1,6 @@
 <p><h1>All <%= @style.name %> classes</h1></p>
 <p>
-    <% @style.dance_classes.each do |dance_class| %>
+    <% @style.dance_classes.upcoming.each do |dance_class| %>
         <%= link_to dance_class.name, dance_class_path(dance_class) %> <%= dance_class.day.name %>, <%= dance_class.time %> at <%= link_to dance_class.studio.name, studio_path(dance_class.studio) %> (<%= dance_class.studio.city %>, <%= dance_class.studio.state %>)<br>
     <% end %>
 </p>
