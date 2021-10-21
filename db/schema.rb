@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20201113202735) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "class_registrations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "dance_class_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20201113202735) do
     t.string   "preferred_pronouns"
     t.string   "last_name"
     t.string   "first_name"
-    t.index ["dance_class_id"], name: "index_class_registrations_on_dance_class_id"
-    t.index ["user_id"], name: "index_class_registrations_on_user_id"
+    t.index ["dance_class_id"], name: "index_class_registrations_on_dance_class_id", using: :btree
+    t.index ["user_id"], name: "index_class_registrations_on_user_id", using: :btree
   end
 
   create_table "dance_classes", force: :cascade do |t|
@@ -35,10 +38,10 @@ ActiveRecord::Schema.define(version: 20201113202735) do
     t.integer  "day_id"
     t.string   "duration"
     t.datetime "start_time"
-    t.index ["day_id"], name: "index_dance_classes_on_day_id"
-    t.index ["studio_id"], name: "index_dance_classes_on_studio_id"
-    t.index ["style_id"], name: "index_dance_classes_on_style_id"
-    t.index ["user_id"], name: "index_dance_classes_on_user_id"
+    t.index ["day_id"], name: "index_dance_classes_on_day_id", using: :btree
+    t.index ["studio_id"], name: "index_dance_classes_on_studio_id", using: :btree
+    t.index ["style_id"], name: "index_dance_classes_on_style_id", using: :btree
+    t.index ["user_id"], name: "index_dance_classes_on_user_id", using: :btree
   end
 
   create_table "days", force: :cascade do |t|
@@ -58,7 +61,7 @@ ActiveRecord::Schema.define(version: 20201113202735) do
     t.string   "zip_code"
     t.string   "contact_phone"
     t.string   "contact_email"
-    t.index ["user_id"], name: "index_studios_on_user_id"
+    t.index ["user_id"], name: "index_studios_on_user_id", using: :btree
   end
 
   create_table "styles", force: :cascade do |t|
@@ -83,8 +86,8 @@ ActiveRecord::Schema.define(version: 20201113202735) do
     t.string   "full_name"
     t.string   "avatar_url"
     t.string   "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
