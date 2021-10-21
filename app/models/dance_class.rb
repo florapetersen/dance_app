@@ -15,4 +15,5 @@ class DanceClass < ApplicationRecord
   def self.upcoming 
     where("start_time > ?", Time.now)
   end
+
 end 
