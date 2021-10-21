@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :dance_classes, only: [:index, :show]
   end
   resources :styles
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do 
-    resources :class_registrations, only: [:index, :new]
+  #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do 
+    #resources :class_registrations, only: [:index, :new]
   end
 
 
